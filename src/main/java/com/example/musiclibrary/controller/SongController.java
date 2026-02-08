@@ -43,9 +43,14 @@ public class SongController {
 
         return songRepository.save(existing);
     }
-    
+
     @DeleteMapping("/{id}")
     public void deleteSong(@PathVariable Long id) {
         songRepository.deleteById(id);
+    }
+
+    @PostMapping
+        public Song createSong(@Valid @RequestBody Song song) {
+        return songRepository.save(song);
     }
 }

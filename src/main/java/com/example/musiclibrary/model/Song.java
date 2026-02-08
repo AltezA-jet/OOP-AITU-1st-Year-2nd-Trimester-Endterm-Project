@@ -1,6 +1,7 @@
 package com.example.musiclibrary.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Song {
@@ -9,11 +10,14 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private String title;
-    private String artist;
-    private String album;
 
-    public Song() {}
+    @NotBlank
+    private String artist;
+
+    @NotBlank
+    private String album;
 
     public Long getId() {
         return id;
@@ -23,20 +27,24 @@ public class Song {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getArtist() {
         return artist;
     }
 
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
-
     public String getAlbum() {
         return album;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
     }
 
     public void setAlbum(String album) {
