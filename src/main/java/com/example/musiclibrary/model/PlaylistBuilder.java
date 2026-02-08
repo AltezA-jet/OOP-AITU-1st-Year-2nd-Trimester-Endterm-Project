@@ -2,11 +2,7 @@ package com.example.musiclibrary.model;
 
 public class PlaylistBuilder {
 
-    private final Playlist playlist;
-
-    public PlaylistBuilder() {
-        this.playlist = new Playlist();
-    }
+    private final Playlist playlist = new Playlist();
 
     public PlaylistBuilder name(String name) {
         playlist.setName(name);
