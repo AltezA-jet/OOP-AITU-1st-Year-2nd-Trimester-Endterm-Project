@@ -7,9 +7,9 @@ public abstract class Media {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    protected Long id;
 
-    private String title;
+    protected String title;
 
     public Long getId() {
         return id;
