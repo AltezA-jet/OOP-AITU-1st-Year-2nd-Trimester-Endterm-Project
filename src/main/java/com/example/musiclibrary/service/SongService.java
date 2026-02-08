@@ -32,18 +32,15 @@ public class SongService {
         return songRepository.save(song);
     }
 
-    public Song update(Long id, SongDto dto) {
+    public Song updateSong(Long id, SongDto dto) {
         Song existing = songRepository.findById(id)
                 .orElseThrow(() -> new SongNotFoundException(id));
 
-        Song updated = new Song(
-                existing.getId(),
-                dto.getTitle(),
-                dto.getArtist(),
-                dto.getAlbum()
-        );
+        existing.setTitle(dto.getTitle());
+        existing.setArtist(dto.getArtist());
+        existing.setAlbum(dto.getAlbum());
 
-        return songRepository.save(updated);
+        return songRepository.save(existing);
     }
 
     public void deleteSong(Long id) {

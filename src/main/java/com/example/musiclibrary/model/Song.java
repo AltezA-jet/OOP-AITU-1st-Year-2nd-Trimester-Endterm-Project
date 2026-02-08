@@ -8,18 +8,10 @@ public class Song extends Media {
     private String artist;
     private String album;
 
-    public Song() {
-    }
-
-    public Song(Long id, String title, String artist, String album) {
-        this.id = id;
-        setTitle(title);
-        this.artist = artist;
-        this.album = album;
-    }
+    public Song() {}
 
     public Song(String title, String artist, String album) {
-        setTitle(title);
+        super(title);
         this.artist = artist;
         this.album = album;
     }
@@ -30,5 +22,13 @@ public class Song extends Media {
 
     public String getAlbum() {
         return album;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public void setAlbum(String album) {
+        this.album = album;
     }
 }
