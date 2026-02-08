@@ -1,4 +1,4 @@
-package main.java.com.example.musiclibrary.model;
+package com.example.musiclibrary.model;
 
 public class PlaylistBuilder {
 

@@ -1,4 +1,5 @@
-package main.java.com.example.musiclibrary.model;
+package com.example.musiclibrary.model;
+
 
 import jakarta.persistence.*;
 import java.util.ArrayList;
