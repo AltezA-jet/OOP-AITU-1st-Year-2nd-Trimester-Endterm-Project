@@ -14,10 +14,16 @@ public class PlaylistService {
     private final PlaylistRepository playlistRepository;
     private final MediaRepository mediaRepository;
 
-    public PlaylistService(PlaylistRepository playlistRepository,
-                           MediaRepository mediaRepository) {
+    public PlaylistService(
+            PlaylistRepository playlistRepository,
+            MediaRepository mediaRepository
+    ) {
         this.playlistRepository = playlistRepository;
         this.mediaRepository = mediaRepository;
+    }
+
+    public List<Playlist> getAll() {
+        return playlistRepository.findAll();
     }
 
     public Playlist create(String name) {
@@ -28,18 +34,18 @@ public class PlaylistService {
         return playlistRepository.save(playlist);
     }
 
-    public List<Playlist> getAll() {
-        return playlistRepository.findAll();
-    }
-
     public Playlist addMedia(Long playlistId, Long mediaId) {
         Playlist playlist = playlistRepository.findById(playlistId)
-                .orElseThrow();
+                .orElseThrow(() -> new RuntimeException("Playlist not found"));
 
         Media media = mediaRepository.findById(mediaId)
-                .orElseThrow();
+                .orElseThrow(() -> new RuntimeException("Media not found"));
 
         playlist.getMediaList().add(media);
         return playlistRepository.save(playlist);
+    }
+
+    public void delete(Long id) {
+        playlistRepository.deleteById(id);
     }
 }

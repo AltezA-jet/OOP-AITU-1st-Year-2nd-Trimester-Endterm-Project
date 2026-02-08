@@ -1,15 +1,17 @@
 package com.example.musiclibrary.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Playlist {
 
     @Id
@@ -19,17 +21,6 @@ public class Playlist {
     private String name;
 
     @ManyToMany
+    @Builder.Default
     private List<Media> mediaList = new ArrayList<>();
-
-    void setName(String name) {
-        this.name = name;
-    }
-
-    void addMedia(Media media) {
-        this.mediaList.add(media);
-    }
-
-    public static PlaylistBuilder builder() {
-        return new PlaylistBuilder();
-    }
 }

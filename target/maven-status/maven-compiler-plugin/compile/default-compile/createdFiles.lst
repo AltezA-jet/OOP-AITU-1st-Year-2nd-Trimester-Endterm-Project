@@ -1,9 +1,3 @@
-com\example\musiclibrary\repository\MediaRepository.class
 com\example\musiclibrary\config\AppConfig.class
-com\example\musiclibrary\model\Playlist.class
-com\example\musiclibrary\model\PlaylistBuilder.class
-com\example\musiclibrary\service\PlaylistService.class
-com\example\musiclibrary\model\Media.class
-com\example\musiclibrary\repository\PlaylistRepository.class
 com\example\musiclibrary\controller\PlaylistController.class
 com\example\musiclibrary\MusicLibraryApplication.class
