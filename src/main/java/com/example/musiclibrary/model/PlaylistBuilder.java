@@ -9,7 +9,7 @@ public class PlaylistBuilder {
         return this;
     }
 
-    public PlaylistBuilder addMedia(Media media) {
+    public PlaylistBuilder add(Media media) {
         playlist.addMedia(media);
         return this;
     }

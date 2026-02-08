@@ -1,6 +1,5 @@
 package com.example.musiclibrary.controller;
 
-import com.example.musiclibrary.dto.SongDto;
 import com.example.musiclibrary.model.Song;
 import com.example.musiclibrary.service.SongService;
 import lombok.RequiredArgsConstructor;
@@ -13,30 +12,20 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SongController {
 
-    private final SongService songService;
+    private final SongService service;
 
     @GetMapping
     public List<Song> getAll() {
-        return songService.getAllSongs();
-    }
-
-    @GetMapping("/{id}")
-    public Song getById(@PathVariable Long id) {
-        return songService.getSongById(id);
+        return service.getAll();
     }
 
     @PostMapping
     public Song create(@RequestBody Song song) {
-        return songService.createSong(song);
-    }
-
-    @PutMapping("/{id}")
-    public Song update(@PathVariable Long id, @RequestBody SongDto dto) {
-        return songService.updateSong(id, dto);
+        return service.save(song);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        songService.deleteSong(id);
+        service.delete(id);
     }
 }
