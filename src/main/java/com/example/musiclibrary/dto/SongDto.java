@@ -6,9 +6,6 @@ public class SongDto {
     private String artist;
     private String album;
 
-    public SongDto() {
-    }
-
     public String getTitle() {
         return title;
     }
@@ -19,17 +16,5 @@ public class SongDto {
 
     public String getAlbum() {
         return album;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
-
-    public void setAlbum(String album) {
-        this.album = album;
     }
 }

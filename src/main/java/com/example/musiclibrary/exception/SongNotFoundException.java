@@ -2,6 +2,6 @@ package com.example.musiclibrary.exception;
 
 public class SongNotFoundException extends RuntimeException {
     public SongNotFoundException(Long id) {
-        super("Song with id " + id + " not found");
+        super("Song not found with id: " + id);
     }
 }

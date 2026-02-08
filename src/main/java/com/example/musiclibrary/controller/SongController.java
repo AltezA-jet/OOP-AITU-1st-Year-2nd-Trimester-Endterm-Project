@@ -22,19 +22,14 @@ public class SongController {
         return songService.getAllSongs();
     }
 
-    @GetMapping("/{id}")
-    public Song getById(@PathVariable Long id) {
-        return songService.getSongById(id);
-    }
-
     @PostMapping
-    public Song create(@RequestBody Song song) {
-        return songService.createSong(song);
+    public Song create(@RequestBody SongDto dto) {
+        return songService.createSong(dto);
     }
 
     @PutMapping("/{id}")
-    public Song update(@PathVariable Long id, @RequestBody SongDto dto) {
-        return songService.updateSong(id, dto);
+    public Song update(@PathVariable Long id, @RequestBody Song song) {
+        return songService.updateSong(id, song);
     }
 
     @DeleteMapping("/{id}")

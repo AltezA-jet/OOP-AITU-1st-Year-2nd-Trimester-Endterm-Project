@@ -1,9 +1,11 @@
 package com.example.musiclibrary.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@MappedSuperclass
 public abstract class Media {
 
     @Id
@@ -12,8 +14,7 @@ public abstract class Media {
 
     protected String title;
 
-    public Media() {
-    }
+    public Media() {}
 
     public Media(String title) {
         this.title = title;

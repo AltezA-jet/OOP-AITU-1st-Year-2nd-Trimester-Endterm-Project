@@ -1,12 +1,12 @@
 package com.example.musiclibrary.service;
 
 import com.example.musiclibrary.dto.SongDto;
+import com.example.musiclibrary.exception.SongNotFoundException;
 import com.example.musiclibrary.model.Song;
 import com.example.musiclibrary.repository.SongRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.StreamSupport;
 
 @Service
 public class SongService {
@@ -18,26 +18,21 @@ public class SongService {
     }
 
     public List<Song> getAllSongs() {
-        return StreamSupport.stream(songRepository.findAll().spliterator(), false)
-                .toList();
+        return songRepository.findAll();
     }
 
-    public Song getSongById(Long id) {
-        return songRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Song not found"));
-    }
-
-    public Song createSong(Song song) {
+    public Song createSong(SongDto dto) {
+        Song song = new Song(dto.getTitle(), dto.getArtist(), dto.getAlbum());
         return songRepository.save(song);
     }
 
-    public Song updateSong(Long id, SongDto dto) {
+    public Song updateSong(Long id, Song updated) {
         Song song = songRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Song not found"));
+                .orElseThrow(() -> new SongNotFoundException(id));
 
-        song.setTitle(dto.getTitle());
-        song.setArtist(dto.getArtist());
-        song.setAlbum(dto.getAlbum());
+        song.setTitle(updated.getTitle());
+        song.setArtist(updated.getArtist());
+        song.setAlbum(updated.getAlbum());
 
         return songRepository.save(song);
     }
