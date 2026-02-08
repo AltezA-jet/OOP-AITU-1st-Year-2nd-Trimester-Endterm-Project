@@ -1,0 +1,4 @@
+com\example\musiclibrary\cotroller\HelloController.class
+com\example\musiclibrary\model\Media.class
+com\example\musiclibrary\cotroller\TestController.class
+com\example\musiclibrary\MusicLibraryApplication.class
