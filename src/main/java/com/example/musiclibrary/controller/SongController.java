@@ -1,5 +1,6 @@
 package com.example.musiclibrary.controller;
 
+import com.example.musiclibrary.dto.SongDto;
 import com.example.musiclibrary.model.Song;
 import com.example.musiclibrary.service.SongService;
 import org.springframework.web.bind.annotation.*;
@@ -17,27 +18,27 @@ public class SongController {
     }
 
     @GetMapping
-    public List<Song> getAllSongs() {
+    public List<Song> getAll() {
         return songService.getAllSongs();
     }
 
     @GetMapping("/{id}")
-    public Song getSong(@PathVariable Long id) {
+    public Song getById(@PathVariable Long id) {
         return songService.getSongById(id);
     }
 
     @PostMapping
-    public Song createSong(@RequestBody Song song) {
+    public Song create(@RequestBody Song song) {
         return songService.createSong(song);
     }
 
     @PutMapping("/{id}")
-    public Song updateSong(@PathVariable Long id, @RequestBody Song song) {
-        return songService.updateSong(id, song);
+    public Song update(@PathVariable Long id, @RequestBody SongDto dto) {
+        return songService.update(id, dto);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteSong(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) {
         songService.deleteSong(id);
     }
 }

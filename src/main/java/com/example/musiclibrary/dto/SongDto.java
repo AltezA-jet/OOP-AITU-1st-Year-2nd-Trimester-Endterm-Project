@@ -6,24 +6,27 @@ public class SongDto {
     private String artist;
     private String album;
 
-    public String getTitle() {
-        return title;
+    public SongDto() {
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getTitle() {
+        return title;
     }
 
     public String getArtist() {
         return artist;
     }
 
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
-
     public String getAlbum() {
         return album;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
     }
 
     public void setAlbum(String album) {

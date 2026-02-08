@@ -34,7 +34,7 @@ public class SongService {
 
     public Song update(Long id, SongDto dto) {
         Song existing = songRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Song not found"));
+                .orElseThrow(() -> new SongNotFoundException(id));
 
         Song updated = new Song(
                 existing.getId(),

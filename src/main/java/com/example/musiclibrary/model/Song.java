@@ -8,11 +8,18 @@ public class Song extends Media {
     private String artist;
     private String album;
 
-    public Song() {}
+    public Song() {
+    }
 
     public Song(Long id, String title, String artist, String album) {
         this.id = id;
-        this.title = title;
+        setTitle(title);
+        this.artist = artist;
+        this.album = album;
+    }
+
+    public Song(String title, String artist, String album) {
+        setTitle(title);
         this.artist = artist;
         this.album = album;
     }
