@@ -30,7 +30,7 @@ public class SongService {
         return songRepository.save(song);
     }
 
-    public Song update(Long id, SongDto dto) {
+    public Song updateSong(Long id, SongDto dto) {
         Song existing = getSongById(id);
 
         existing.setTitle(dto.getTitle());

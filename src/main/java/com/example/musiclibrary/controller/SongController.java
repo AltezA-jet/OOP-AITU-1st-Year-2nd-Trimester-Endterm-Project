@@ -32,7 +32,7 @@ public class SongController {
 
     @PutMapping("/{id}")
     public Song update(@PathVariable Long id, @RequestBody SongDto dto) {
-        return songService.update(id, dto);
+        return songService.updateSong(id, dto);
     }
 
     @DeleteMapping("/{id}")
