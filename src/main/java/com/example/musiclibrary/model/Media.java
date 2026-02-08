@@ -12,7 +12,8 @@ public abstract class Media {
 
     protected String title;
 
-    public Media() {}
+    public Media() {
+    }
 
     public Media(String title) {
         this.title = title;

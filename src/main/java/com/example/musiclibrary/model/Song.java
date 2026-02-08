@@ -8,7 +8,8 @@ public class Song extends Media {
     private String artist;
     private String album;
 
-    public Song() {}
+    public Song() {
+    }
 
     public Song(String title, String artist, String album) {
         super(title);

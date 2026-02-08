@@ -6,7 +6,8 @@ public class SongDto {
     private String artist;
     private String album;
 
-    public SongDto() {}
+    public SongDto() {
+    }
 
     public String getTitle() {
         return title;

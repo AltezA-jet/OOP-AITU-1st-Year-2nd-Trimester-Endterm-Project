@@ -7,7 +7,8 @@ public class Podcast extends Media {
 
     private String host;
 
-    public Podcast() {}
+    public Podcast() {
+    }
 
     public Podcast(String title, String host) {
         super(title);

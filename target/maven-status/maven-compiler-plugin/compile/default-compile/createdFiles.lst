@@ -1,14 +1,2 @@
-com\example\musiclibrary\repository\MediaRepository.class
-com\example\musiclibrary\service\MediaService.class
-com\example\musiclibrary\factory\MediaType.class
-com\example\musiclibrary\factory\MediaFactory$1.class
-com\example\musiclibrary\service\PlaylistService.class
-com\example\musiclibrary\model\Media.class
-com\example\musiclibrary\MusicLibraryApplication.class
-com\example\musiclibrary\model\Playlist.class
-com\example\musiclibrary\exception\GlobalExceptionHandler.class
 com\example\musiclibrary\controller\MediaController.class
-com\example\musiclibrary\model\PlaylistBuilder.class
-com\example\musiclibrary\exception\SongNotFoundException.class
-com\example\musiclibrary\repository\PlaylistRepository.class
-com\example\musiclibrary\controller\PlaylistController.class
+com\example\musiclibrary\MusicLibraryApplication.class

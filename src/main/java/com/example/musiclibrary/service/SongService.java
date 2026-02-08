@@ -1,7 +1,6 @@
 package com.example.musiclibrary.service;
 
 import com.example.musiclibrary.dto.SongDto;
-import com.example.musiclibrary.exception.SongNotFoundException;
 import com.example.musiclibrary.model.Song;
 import com.example.musiclibrary.repository.SongRepository;
 import org.springframework.stereotype.Service;
@@ -25,7 +24,7 @@ public class SongService {
 
     public Song getSongById(Long id) {
         return songRepository.findById(id)
-                .orElseThrow(() -> new SongNotFoundException(id));
+                .orElseThrow(() -> new RuntimeException("Song not found"));
     }
 
     public Song createSong(Song song) {
@@ -33,14 +32,14 @@ public class SongService {
     }
 
     public Song updateSong(Long id, SongDto dto) {
-        Song existing = songRepository.findById(id)
-                .orElseThrow(() -> new SongNotFoundException(id));
+        Song song = songRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Song not found"));
 
-        existing.setTitle(dto.getTitle());
-        existing.setArtist(dto.getArtist());
-        existing.setAlbum(dto.getAlbum());
+        song.setTitle(dto.getTitle());
+        song.setArtist(dto.getArtist());
+        song.setAlbum(dto.getAlbum());
 
-        return songRepository.save(existing);
+        return songRepository.save(song);
     }
 
     public void deleteSong(Long id) {
