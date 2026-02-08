@@ -2,23 +2,20 @@ package com.example.musiclibrary.model;
 
 import jakarta.persistence.*;
 
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Media {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
-    private String creator;
+    protected String title;
 
-    protected Media() {
-        // JPA
-    }
+    public Media() {}
 
-    protected Media(String title, String creator) {
+    public Media(String title) {
         this.title = title;
-        this.creator = creator;
     }
 
     public Long getId() {
@@ -27,9 +24,5 @@ public abstract class Media {
 
     public String getTitle() {
         return title;
-    }
-
-    public String getCreator() {
-        return creator;
     }
 }

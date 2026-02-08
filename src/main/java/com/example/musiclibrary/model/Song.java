@@ -5,15 +5,19 @@ import jakarta.persistence.Entity;
 @Entity
 public class Song extends Media {
 
+    private String artist;
     private String album;
 
-    protected Song() {
-        // JPA
-    }
+    public Song() {}
 
     public Song(String title, String artist, String album) {
-        super(title, artist);
+        super(title);
+        this.artist = artist;
         this.album = album;
+    }
+
+    public String getArtist() {
+        return artist;
     }
 
     public String getAlbum() {

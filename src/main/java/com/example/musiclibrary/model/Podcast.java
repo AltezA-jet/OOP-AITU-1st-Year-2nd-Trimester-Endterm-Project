@@ -5,11 +5,16 @@ import jakarta.persistence.Entity;
 @Entity
 public class Podcast extends Media {
 
-    protected Podcast() {
-        // JPA
-    }
+    private String host;
+
+    public Podcast() {}
 
     public Podcast(String title, String host) {
-        super(title, host);
+        super(title);
+        this.host = host;
+    }
+
+    public String getHost() {
+        return host;
     }
 }
