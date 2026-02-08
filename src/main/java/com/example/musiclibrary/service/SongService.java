@@ -1,5 +1,6 @@
 package com.example.musiclibrary.service;
 
+import com.example.musiclibrary.dto.SongDto;
 import com.example.musiclibrary.exception.SongNotFoundException;
 import com.example.musiclibrary.model.Song;
 import com.example.musiclibrary.repository.SongRepository;
@@ -31,12 +32,19 @@ public class SongService {
         return songRepository.save(song);
     }
 
-    Song updated = new Song(
-        existing.getId(),
-        dto.getTitle(),
-        dto.getArtist(),
-        dto.getAlbum()
-    );
+    public Song update(Long id, SongDto dto) {
+        Song existing = songRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Song not found"));
+
+        Song updated = new Song(
+            existing.getId(),
+            dto.getTitle(),
+            dto.getArtist(),
+            dto.getAlbum()
+        );
+
+        return songRepository.save(updated);
+    }
 
 return songRepository.save(updated);
 
