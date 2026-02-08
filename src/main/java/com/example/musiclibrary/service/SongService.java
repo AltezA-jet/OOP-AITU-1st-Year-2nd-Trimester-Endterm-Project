@@ -37,17 +37,14 @@ public class SongService {
                 .orElseThrow(() -> new RuntimeException("Song not found"));
 
         Song updated = new Song(
-            existing.getId(),
-            dto.getTitle(),
-            dto.getArtist(),
-            dto.getAlbum()
+                existing.getId(),
+                dto.getTitle(),
+                dto.getArtist(),
+                dto.getAlbum()
         );
 
         return songRepository.save(updated);
     }
-
-return songRepository.save(updated);
-
 
     public void deleteSong(Long id) {
         songRepository.deleteById(id);
