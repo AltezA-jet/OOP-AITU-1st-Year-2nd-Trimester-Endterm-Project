@@ -10,8 +10,9 @@ public class Song extends Media {
 
     public Song() {}
 
-    public Song(String title, String artist, String album) {
-        super(title);
+    public Song(Long id, String title, String artist, String album) {
+        this.id = id;
+        this.title = title;
         this.artist = artist;
         this.album = album;
     }

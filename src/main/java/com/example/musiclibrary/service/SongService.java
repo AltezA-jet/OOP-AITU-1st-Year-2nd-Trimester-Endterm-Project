@@ -31,15 +31,15 @@ public class SongService {
         return songRepository.save(song);
     }
 
-    public Song updateSong(Long id, Song song) {
-        Song existing = getSongById(id);
+    Song updated = new Song(
+        existing.getId(),
+        dto.getTitle(),
+        dto.getArtist(),
+        dto.getAlbum()
+    );
 
-        existing.setTitle(song.getTitle());
-        existing.setArtist(song.getArtist());
-        existing.setAlbum(song.getAlbum());
+return songRepository.save(updated);
 
-        return songRepository.save(existing);
-    }
 
     public void deleteSong(Long id) {
         songRepository.deleteById(id);
