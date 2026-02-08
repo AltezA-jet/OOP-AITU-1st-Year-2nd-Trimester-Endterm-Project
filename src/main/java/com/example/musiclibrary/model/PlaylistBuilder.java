@@ -1,7 +1,4 @@
-package com.example.musiclibrary.builder;
-
-import com.example.musiclibrary.model.Media;
-import com.example.musiclibrary.model.Playlist;
+package com.example.musiclibrary.model;
 
 public class PlaylistBuilder {
 
