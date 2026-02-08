@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.StreamSupport;
 
 @Service
 @RequiredArgsConstructor
@@ -16,28 +17,27 @@ public class SongService {
     private final SongRepository songRepository;
 
     public List<Song> getAllSongs() {
-        return songRepository.findAll();
+        return StreamSupport.stream(songRepository.findAll().spliterator(), false)
+                .toList();
     }
 
-    public Song createSong(SongDto dto) {
-        Song song = new Song(
-                null,
-                dto.getTitle(),
-                dto.getArtist(),
-                dto.getAlbum()
-        );
-        return songRepository.save(song);
-    }
-
-    public Song updateSong(Long id, SongDto dto) {
-        Song song = songRepository.findById(id)
+    public Song getSongById(Long id) {
+        return songRepository.findById(id)
                 .orElseThrow(() -> new SongNotFoundException(id));
+    }
 
-        song.setTitle(dto.getTitle());
-        song.setArtist(dto.getArtist());
-        song.setAlbum(dto.getAlbum());
-
+    public Song createSong(Song song) {
         return songRepository.save(song);
+    }
+
+    public Song update(Long id, SongDto dto) {
+        Song existing = getSongById(id);
+
+        existing.setTitle(dto.getTitle());
+        existing.setArtist(dto.getArtist());
+        existing.setAlbum(dto.getAlbum());
+
+        return songRepository.save(existing);
     }
 
     public void deleteSong(Long id) {
