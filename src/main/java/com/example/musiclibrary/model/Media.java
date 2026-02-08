@@ -7,9 +7,19 @@ public abstract class Media {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id;
+    private Long id;
 
-    protected String title;
+    private String title;
+    private String creator;
+
+    protected Media() {
+        // JPA
+    }
+
+    protected Media(String title, String creator) {
+        this.title = title;
+        this.creator = creator;
+    }
 
     public Long getId() {
         return id;
@@ -19,7 +29,7 @@ public abstract class Media {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getCreator() {
+        return creator;
     }
 }
