@@ -1,51 +1,35 @@
 package com.example.musiclibrary.service;
 
-import com.example.musiclibrary.model.Media;
-import com.example.musiclibrary.model.Playlist;
-import com.example.musiclibrary.repository.MediaRepository;
-import com.example.musiclibrary.repository.PlaylistRepository;
+import com.example.musiclibrary.exception.SongNotFoundException;
+import com.example.musiclibrary.model.Song;
+import com.example.musiclibrary.repository.SongRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class PlaylistService {
+public class SongService {
 
-    private final PlaylistRepository playlistRepository;
-    private final MediaRepository mediaRepository;
+    private final SongRepository repository;
 
-    public PlaylistService(
-            PlaylistRepository playlistRepository,
-            MediaRepository mediaRepository
-    ) {
-        this.playlistRepository = playlistRepository;
-        this.mediaRepository = mediaRepository;
+    public SongService(SongRepository repository) {
+        this.repository = repository;
     }
 
-    public List<Playlist> getAll() {
-        return playlistRepository.findAll();
+    public List<Song> getAllSongs() {
+        return repository.findAll();
     }
 
-    public Playlist create(String name) {
-        Playlist playlist = Playlist.builder()
-                .name(name)
-                .build();
-
-        return playlistRepository.save(playlist);
+    public Song getSongById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new SongNotFoundException(id));
     }
 
-    public Playlist addMedia(Long playlistId, Long mediaId) {
-        Playlist playlist = playlistRepository.findById(playlistId)
-                .orElseThrow(() -> new RuntimeException("Playlist not found"));
-
-        Media media = mediaRepository.findById(mediaId)
-                .orElseThrow(() -> new RuntimeException("Media not found"));
-
-        playlist.getMediaList().add(media);
-        return playlistRepository.save(playlist);
+    public Song createSong(Song song) {
+        return repository.save(song);
     }
 
-    public void delete(Long id) {
-        playlistRepository.deleteById(id);
+    public void deleteSong(Long id) {
+        repository.deleteById(id);
     }
 }
